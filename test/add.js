@@ -11,7 +11,6 @@ describe('add', () => {
   it('should return a new date with the correct time difference', () => {
     const date = new Date('2015-01-01');
     const actual = SD.add('days', 2, date);
-    console.log('************', actual.toString());
 
     assert.notEqual(date, actual, 'should return a new date');
     assert.equal(date.toString(), new Date('2015-01-01').toString(), 'should not change the original date');
@@ -68,13 +67,13 @@ describe('add', () => {
 
   it('should throw a type error when provided an invalid time unit', () => {
     assert.throws(function() { SD.add('xxx', 1, new Date()) },
-      '‘add’ expected a value of type TimeUnitFull as its first argument; ' +
-      'received "xxx"');
+      '‘add’ expected a value of type ("milliseconds" | "seconds" | "minutes" | "hours" | "days" | "months" | "years") ' +
+      'as its first argument; received "xxx"');
   });
 
   it('should throw a type error when provided an increment value that is not a number', () => {
     assert.throws(function() { SD.add('months', 'xxx', new Date()) },
-      '‘add’ expected a value of type Number as its second argument; ' +
+      'add’ expected a value of type Number as its second argument; ' +
       'received "xxx"');
   });
 

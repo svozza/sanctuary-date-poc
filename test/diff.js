@@ -47,8 +47,8 @@ describe('SD.diff', () => {
 
   it('should throw a type error when provided an invalid time unit', () => {
     assert.throws(function() {SD.diff('xxx', date1, new Date())},
-                  '‘diff’ expected a value of type TimeUnitFull as its first argument; ' +
-                  'received "xxx"');
+      '‘diff’ expected a value of type ("milliseconds" | "seconds" | "minutes" | "hours" | "days" | "months" | "years") ' +
+      'as its first argument; received "xxx"');
   });
 
   it('should throw a type error when provided an invalid date as second argument', () => {

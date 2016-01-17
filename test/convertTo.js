@@ -7,8 +7,8 @@ describe('convertTo', () => {
 
     it('should throw a type error when provided an invalid time unit', () => {
         assert.throws(function() {SD.convertTo('xxx', date)},
-          '‘convertTo’ expected a value of type TimeUnit as its first argument; ' +
-          'received "xxx"');
+          '‘convertTo’ expected a value of type ("milliseconds" | "seconds" | "minutes" | "hours" | "days") ' +
+          'as its first argument; received "xxx"');
     });
 
     it('should throw a type error when provided an invalid date', () => {
