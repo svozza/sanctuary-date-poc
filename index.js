@@ -35,12 +35,18 @@ const $Either = $.NullaryType(
   x => x.isRight || x.isLeft
 );
 
-const env = $.env.concat([$.ValidDate, $.ValidNumber, $TimeUnit, $TimeUnitFull, $TimeUnitGet, $Either]);
+const env = $.env.concat([$.ValidDate, $.ValidNumber, $.Integer, $TimeUnit,
+  $TimeUnitFull, $TimeUnitGet, $Either]);
 const def = $.create(env);
 
 const add = (step, count, date) => {
   const add = D.add(step, count, date);
   return D.isValid(add) ? S.Right(add) : S.Left(add)
+};
+
+const set = (step, count, date) => {
+  const set = D.set(step, count, date);
+  return D.isValid(set) ? S.Right(set) : S.Left(set)
 };
 
 module.exports = {
@@ -52,5 +58,7 @@ module.exports = {
   isLeapYear: def('isLeapYear', {}, [$.ValidDate, $.Boolean], D.isLeapYear),
   isValid: def('isValid', {}, [$.Any, $.Boolean], D.isValid),
   max: def('max', {}, [$.Array($.ValidDate), $.ValidDate], D.max),
-  min: def('min', {}, [$.Array($.ValidDate), $.ValidDate], D.min)
+  min: def('min', {}, [$.Array($.ValidDate), $.ValidDate], D.min),
+  set: def('set', {}, [$TimeUnitGet, $.Number, $.ValidDate, $Either], set),
+  unixTime: def('unixTime', {}, [$.ValidDate, $.Integer], D.unixTime)
 };

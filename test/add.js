@@ -85,7 +85,7 @@ describe('add', () => {
 
   it('should return a Left if the step results in an invalid date', () => {
     const actual = SD.add('months', 1, new Date('2015-01-30'));
-    assert.ok(Number.isNaN(S.either(S.I, S.I, actual).getTime()));
+    assert.ok(actual.equals(S.Left(new Date('invalid'))));
   });
 
 });
