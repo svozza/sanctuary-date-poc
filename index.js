@@ -50,15 +50,18 @@ const set = (step, count, date) => {
 };
 
 module.exports = {
-  add: def('add', {}, [$TimeUnitFull, $.Number, $.ValidDate, $Either], add),
+  add: def('add', {}, [$TimeUnitFull, $.Integer, $.ValidDate, $Either], add),
   convertTo: def('convertTo', {}, [$TimeUnit, $.ValidDate, $.ValidNumber], D.convertTo),
-  diff: def('diff', {}, [$TimeUnitFull, $.ValidDate, $.ValidDate, $.ValidNumber], D.diff),
+  diff: def('diff', {}, [$TimeUnitFull, $.ValidDate, $.ValidDate, $.Integer], D.diff),
   equals: def('equals', {}, [$.ValidDate, $.ValidDate, $.Boolean], D.equals),
-  get: def('get', {}, [$TimeUnitGet, $.ValidDate, $.ValidNumber], D.get),
+  get: def('get', {}, [$TimeUnitGet, $.ValidDate, $.Integer], D.get),
   isLeapYear: def('isLeapYear', {}, [$.ValidDate, $.Boolean], D.isLeapYear),
   isValid: def('isValid', {}, [$.Any, $.Boolean], D.isValid),
   max: def('max', {}, [$.Array($.ValidDate), $.ValidDate], D.max),
   min: def('min', {}, [$.Array($.ValidDate), $.ValidDate], D.min),
-  set: def('set', {}, [$TimeUnitGet, $.Number, $.ValidDate, $Either], set),
+  set: def('set', {}, [$TimeUnitGet, $.Integer, $.ValidDate, $Either], set),
   unixTime: def('unixTime', {}, [$.ValidDate, $.Integer], D.unixTime)
 };
+
+console.log(D.parse('q', '2010-01-01'));
+console.log(D.parse('MMM Do, YYYY', 'January 1st, 2015'));

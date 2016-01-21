@@ -73,7 +73,7 @@ describe('add', () => {
 
   it('should throw a type error when provided an increment value that is not a number', () => {
     assert.throws(function() { SD.add('months', 'xxx', new Date()) },
-      'add’ expected a value of type Number as its second argument; ' +
+      'add’ expected a value of type Integer as its second argument; ' +
       'received "xxx"');
   });
 
