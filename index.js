@@ -54,6 +54,7 @@ module.exports = {
   convertTo: def('convertTo', {}, [$TimeUnit, $.ValidDate, $.ValidNumber], D.convertTo),
   diff: def('diff', {}, [$TimeUnitFull, $.ValidDate, $.ValidDate, $.Integer], D.diff),
   equals: def('equals', {}, [$.ValidDate, $.ValidDate, $.Boolean], D.equals),
+  format: def('format', {}, [$.String, $.ValidDate, $.String], D.format),
   get: def('get', {}, [$TimeUnitGet, $.ValidDate, $.Integer], D.get),
   isLeapYear: def('isLeapYear', {}, [$.ValidDate, $.Boolean], D.isLeapYear),
   isValid: def('isValid', {}, [$.Any, $.Boolean], D.isValid),
