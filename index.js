@@ -76,6 +76,3 @@ module.exports = {
   set: def('set', {}, [$TimeUnitGet, $.Integer, $.ValidDate, $Either($InvalidDate, $.ValidDate)], set),
   unixTime: def('unixTime', {}, [$.ValidDate, $.Integer], D.unixTime)
 };
-
-console.log(D.parse('q', '2010-01-01'));
-console.log(D.parse('MMM Do, YYYY', 'January 1st, 2015'));
