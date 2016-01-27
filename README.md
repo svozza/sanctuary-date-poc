@@ -1,11 +1,11 @@
 A proof of concept for a type safe version of [**date-fp**](https://github.com/cullophid/date-fp)
 that returns an `Either` if an operation results in an invalid date. Run time type checking
 is provided by [**sanctuary-def**](https://github.com/plaid/sanctuary-def). All
-types except `TimeUnit` are defined [there](https://github.com/plaid/sanctuary-def#types).
+types except `TimeUnit` and `InvalidDate` are defined [there](https://github.com/plaid/sanctuary-def#types).
 
 ## Functions:
 
-### add :: TimeUnit -> Integer -> ValidDate -> $Either
+### add :: TimeUnit -> Integer -> ValidDate -> Either (InvalidDate ValidDate)
 
 ### convertTo :: TimeUnit -> ValidDate -> ValidNumber
 
@@ -23,6 +23,8 @@ types except `TimeUnit` are defined [there](https://github.com/plaid/sanctuary-d
 
 ### max :: [ValidDate] -> ValidDate
 
-### set :: TimeUnit -> Integer -> ValidDate -> Either
+### parse :: String -> String -> Either (InvalidDate ValidDate)
+
+### set :: TimeUnit -> Integer -> ValidDate -> Either (InvalidDate ValidDate)
 
 ### unixTime :: ValidDate -> Integer
