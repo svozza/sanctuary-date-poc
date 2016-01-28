@@ -85,7 +85,8 @@ describe('add', () => {
 
   it('should return a Left if the step results in an invalid date', () => {
     const actual = SD.add('months', 1, new Date('2015-01-30'));
-    assert.ok(actual.equals(S.Left(new Date('invalid'))));
+    assert.ok(actual.equals(S.Left(
+      "Incrementing Fri Jan 30 2015 00:00:00 GMT+0000 (GMT) by 1 months resulted in an invalid date.")));
   });
 
 });

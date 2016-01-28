@@ -68,7 +68,8 @@ describe('set', () => {
     const input = new Date('2015-02-01 11:22:33.333');
     const actual = set('date', 30, input);
 
-    assert(actual.equals(S.Left(new Date('invalid'))));
+    assert(actual.equals(
+      S.Left("Setting the date to 30 for Sun Feb 01 2015 11:22:33 GMT+0000 (GMT) resulted in an invalid date.")));
   });
 
   it('should work for month', () => {
@@ -82,7 +83,8 @@ describe('set', () => {
     const input = new Date('2015-02-01 11:22:33.333');
     const actual = set('month', 13, input);
 
-    assert(actual.equals(S.Left(new Date('invalid'))));
+    assert(actual.equals(
+      S.Left("Setting the month to 13 for Sun Feb 01 2015 11:22:33 GMT+0000 (GMT) resulted in an invalid date.")));
   });
 
   it('should work for year', () => {

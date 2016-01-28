@@ -73,7 +73,8 @@ describe('parse', () => {
     const pattern = 'YYYY-MM-DD';
     const actual = parse(pattern, datestring);
 
-    assert(actual.equals(S.Left(new Date('invalid'))));
+    assert(actual.equals(
+      S.Left('The date string "0099-01-01" resulted in an invalid date.')));
   });
 
   it('should return a Left if given bad Month', () => {
@@ -81,7 +82,8 @@ describe('parse', () => {
     const pattern = 'YYYY-MM-DD';
     const actual = parse(pattern, datestring);
 
-    assert(actual.equals(S.Left(new Date('invalid'))));
+    assert(actual.equals(
+      S.Left('The date string "2015-13-01" resulted in an invalid date.')));
   });
 
   it('should return Left if given bad Date', () => {
@@ -89,31 +91,35 @@ describe('parse', () => {
     const pattern = 'YYYY-MM-DD';
     const actual = parse(pattern, datestring);
 
-    assert(actual.equals(S.Left(new Date('invalid'))));
+    assert(actual.equals(
+      S.Left('The date string "2015-02-29" resulted in an invalid date.')));
   });
 
-  it('should return a Left if given bad hour', () => {
+  it('should return a Left if given a bad hour', () => {
     const datestring = '2015-11-01 24:00:00';
     const pattern = 'YYYY-MM-DD HH:mm:ss';
     const actual = parse(pattern, datestring);
 
-    assert(actual.equals(S.Left(new Date('invalid'))));
+    assert(actual.equals(
+      S.Left('The date string "2015-11-01 24:00:00" resulted in an invalid date.')));
   });
 
-  it('should return Invalid Date if given bad Hour', () => {
+  it('should return Invalid Date if given a bad minute', () => {
     const datestring = '2015-11-01 22:60:00';
     const pattern = 'YYYY-MM-DD HH:mm:ss';
     const actual = parse(pattern, datestring);
 
-    assert(actual.equals(S.Left(new Date('invalid'))));
+    assert(actual.equals(
+      S.Left('The date string "2015-11-01 22:60:00" resulted in an invalid date.')));
   });
 
-  it('should return Invalid Date if given bad minute', () => {
+  it('should return Invalid Date if given bad seconds', () => {
     const datestring = '2015-11-01 22:00:60';
     const pattern = 'YYYY-MM-DD HH:mm:ss';
     const actual = parse(pattern, datestring);
 
-    assert(actual.equals(S.Left(new Date('invalid'))));
+    assert(actual.equals(
+      S.Left('The date string "2015-11-01 22:00:60" resulted in an invalid date.')));
   });
 
 });
